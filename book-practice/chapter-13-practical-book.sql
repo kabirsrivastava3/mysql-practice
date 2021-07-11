@@ -2,51 +2,13 @@
 --4 tables are created for practicing questions
 ----------------------------------------------------------------------------
 
-create table faculty
-(
-    id numeric(5) primary key,
-    lastName varchar(30) not null,
-    firstName varchar(30) not null,
-    locationid numeric(5) references location(id),
-    phone varchar(10),
-    rank varchar(8),
-    check ((rank = 'ASSO') or (rank = 'FULL') or (rank = 'ASST') or (rank = 'INST'))
-    startdate date
-); 
+create table faculty( id numeric(5) primary key, lastName varchar(30) not null, firstName varchar(30) not null, locationid numeric(5) references location(id), phone varchar(10), rank varchar(8), check ((rank = 'ASSO') or (rank = 'FULL') or (rank = 'ASST') or (rank = 'INST')) startdate date); 
 
+create table student( id numeric(5) primary key, lastName varchar(30) not null, firstName varchar(30) not null, street varchar(25), city varchar(20), state char(5) default 'Del', zip varchar(9), phone varchar(10), class char(2) default 'FR', dob date, facultyid numeric(4) references faculty(id));
 
+create table term( id numeric(5) primary key, status varchar(30) not null, check ((status = 'OPEN') or (status = 'CLOSED')));
 
-
-create table student
-(
-    id numeric(5) primary key,
-    lastName varchar(30) not null,
-    firstName varchar(30) not null,
-    street varchar(25),
-    city varchar(20),
-    state char(5) default 'Del',
-    zip varchar(9),
-    phone varchar(10),
-    class char(2) default 'FR',
-    dob date,
-    facultyid numeric(4) references faculty(id)
-);
-
-
-create table term
-(
-    id numeric(5) primary key,
-    status varchar(30) not null,
-    check ((status = 'OPEN') or (status = 'CLOSED'))
-);
-
-create table course
-(
-    id numeric(6) primary key,
-    code varchar(10) not null,
-    name varchar(25),
-    credit numeric(2) default 3
-);
+create table course( id numeric(6) primary key, code varchar(10) not null, name varchar(25), credit numeric(2) default 3);
     
 ----------------------------------------------------------------------------------------------------------------
 --inserting values into table salesrep (PRIS 13.2)

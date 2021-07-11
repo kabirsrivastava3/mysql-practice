@@ -11,8 +11,7 @@ USE testing --for using a database
 
 SHOW TABLES; --for showing all tables
 
-CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),
-species VARCHAR(20), age int(10), sex CHAR(1), birth DATE, death DATE); --for creating a table with values
+CREATE TABLE pet(name VARCHAR(20), owner VARCHAR(20), species VARCHAR(20), age int(10), sex CHAR(1), birth DATE, death DATE); --for creating a table with values
 
 SHOW TABLES; 
 
@@ -22,29 +21,21 @@ DESCRIBE pet; --for describing a table i.e showing all attributes and types
 
 --inserting values into table
 
-INSERT INTO pet
-VALUES ('Claws','Gwen','cat','6','m','2015-03-17',NULL);
+INSERT INTO pet VALUES ('Claws','Gwen','cat','6','m','2015-03-17',NULL);
 
-INSERT INTO pet
-VALUES ('Buffy','Harold','dog','5','f','2016-05-13',NULL);
+INSERT INTO pet VALUES ('Buffy','Harold','dog','5','f','2016-05-13',NULL);
 
-INSERT INTO pet
-VALUES ('Fang','Benny','dog','7','m','2014-08-27',NULL);
+INSERT INTO pet VALUES ('Fang','Benny','dog','7','m','2014-08-27',NULL);
 
-INSERT INTO pet
-VALUES ('Bowser','Diane','dog','4','m','2017-08-31',NULL);
+INSERT INTO pet VALUES ('Bowser','Diane','dog','4','m','2017-08-31',NULL);
 
-INSERT INTO pet
-VALUES ('Puffball','Diane','hamster','3','f','2018-03-30',NULL);
+INSERT INTO pet VALUES ('Puffball','Diane','hamster','3','f','2018-03-30',NULL);
 
-INSERT INTO pet
-VALUES ('Chirpy','Gwen','bird','1', 'f','2020-09-11',NULL);
+INSERT INTO pet VALUES ('Chirpy','Gwen','bird','1', 'f','2020-09-11',NULL);
 
-INSERT INTO pet
-VALUES ('Whistler','Gwen','bird','2', 'f','2019-12-09',NULL);
+INSERT INTO pet VALUES ('Whistler','Gwen','bird','2', 'f','2019-12-09',NULL);
 
-INSERT INTO pet
-VALUES ('Slim','Benny','snake','3', 'm','2018-09-24',NULL);
+INSERT INTO pet VALUES ('Slim','Benny','snake','3', 'm','2018-09-24',NULL);
 
 -------------------------------------------------------------------------------------------------------------
 
@@ -62,8 +53,7 @@ SELECT * FROM pet WHERE species = 'dog' AND sex = 'f'; --displays all rows of pe
 
 SELECT * FROM pet WHERE species = 'snake' OR species = 'bird'; --displays all rows of pets who are 'snake' and 'bird' 
 
-SELECT * FROM pet WHERE (species = 'cat' AND sex = 'm')
-OR (species = 'dog' AND sex = 'f'); --displays all rows of pets who are either male cats or female dogs
+SELECT * FROM pet WHERE (species = 'cat' AND sex = 'm') OR (species = 'dog' AND sex = 'f'); --displays all rows of pets who are either male cats or female dogs
 
 SELECT name, birth FROM pet; --displays all columns of name and birthdate of pets 
 
@@ -71,37 +61,26 @@ SELECT owner FROM pet; --to find out who owns pets
 
 SELECT DISTINCT owner FROM pet; -- to find out who owns pets, removes redundant values
 
-SELECT name, species, birth FROM pet
-WHERE species = 'dog' OR species = 'cat'; --to get birthdates for dogs and cats only
+SELECT name, species, birth FROM pet WHERE species = 'dog' OR species = 'cat'; --to get birthdates for dogs and cats only
 
 SELECT name, birth FROM pet ORDER BY birth; --animal name and birthdays, sorted by date in ascending order
 
 SELECT name, birth FROM pet ORDER BY birth DESC; --animal name and birthdays, sorted by date in descending order
 
-SELECT name, species, birth FROM pet
-ORDER BY species, birth DESC; --animal name, species and birthdays, sorted by date and species in descending order
+SELECT name, species, birth FROM pet ORDER BY species, birth DESC; --animal name, species and birthdays, sorted by date and species in descending order
 
 
-SELECT name, birth, CURDATE(),
-TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS age
-FROM pet;   --how many years old each of your pets is, use the TIMESTAMPDIFF() function. 
+SELECT name, birth, CURDATE(), TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS age FROM pet;   --how many years old each of your pets is, use the TIMESTAMPDIFF() function. 
 ---Its arguments are the unit in which you want the result expressed, and the two dates for which to take the difference.
 
 
-SELECT name, birth, CURDATE(),
-TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS age
-FROM pet ORDER BY name --the result could be scanned more easily if the rows were presented in some order. By adding an ORDER BY name clause
+SELECT name, birth, CURDATE(), TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS age FROM pet ORDER BY name --the result could be scanned more easily if the rows were presented in some order. By adding an ORDER BY name clause
 
-SELECT name, birth, CURDATE(),
-TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS age
-FROM pet ORDER BY age; --sort the output by age rather than name, just use a different ORDER BY clause
+SELECT name, birth, CURDATE(), TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS age FROM pet ORDER BY age; --sort the output by age rather than name, just use a different ORDER BY clause
 
 
-SELECT name, birth, death,
-TIMESTAMPDIFF(YEAR,birth,death) AS age
-FROM pet WHERE death IS NOT NULL ORDER BY age; --determine which animals these are by checking whether the death value is NULL. 
+SELECT name, birth, death, TIMESTAMPDIFF(YEAR,birth,death) AS age FROM pet WHERE death IS NOT NULL ORDER BY age; --determine which animals these are by checking whether the death value is NULL. 
 --Then, for those with non-NULL values, compute the difference between the death and birth values
-
 
 
 SELECT name, birth FROM pet ORDER BY birth DESC; --displays the value of both birth and MONTH(birth)

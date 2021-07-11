@@ -1,8 +1,7 @@
 
 --table customer with values inserted into it for practice
 
-create table customer (custnumb int(10), custname varchar(20),
-fulladdress text(1000), balance float(10,2), credlim int(10), slsrnumb int(10));
+create table customer(custnumb int(10), custname varchar(20), fulladdress text(1000), balance float(10,2), credlim int(10), slsrnumb int(10));
 
 INSERT INTO customer VALUES ('124','Tina Adams','add 1','418000.75','50000','3');
 
@@ -28,9 +27,7 @@ INSERT INTO customer VALUES ('622','Pratham Jain','add 10','57500.50','50000','3
 
 --table orderDetails with values inserted into it for practice
 
-create table orderDetails (ordnumb int(10), partnumb varchar(20),
-numbord int(10), quotpric float(10,2));
-
+create table orderDetails(ordnumb int(10), partnumb varchar(20), numbord int(10), quotpric float(10,2));
 
 INSERT INTO orderDetails VALUES ('12489','AX12','11',14.95);
 
@@ -74,8 +71,7 @@ INSERT INTO orders VALUES ('12504','522','2018-05-05');
 
 --table parts with values inserted into it for practice
 
-create table parts (partnumb varchar(10), partdesc varchar(20), unonhand int(10),
-itemclass varchar(10), wrehsnm int(10), unitprice float(10,2));
+create table parts(partnumb varchar(10), partdesc varchar(20), unonhand int(10), itemclass varchar(10), wrehsnm int(10), unitprice float(10,2));
 
 INSERT INTO parts VALUES ('AX12','IRON','104','HW','3','17.95');
 
